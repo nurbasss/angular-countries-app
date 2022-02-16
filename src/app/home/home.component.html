@@ -1,0 +1,28 @@
+<div class="home">
+    <div class="home__form">
+        <div class="home__input">
+            <i class="icon"></i>
+            <input type="search" placeholder="Search for country..." [(ngModel)]="inpCountry">
+        </div>
+        <div class="dropdown">
+            <div class="dropdown__btn" (click)="toggleDropdown()">
+                Filter by Region <i class="dropdown__icon"></i>
+            </div>
+            
+            <div class="dropdown__content" [ngClass]="{'show':dropdownShow}">
+                <div class="dropdown__option" (click)="setRegion('all')">All</div>
+                <div class="dropdown__option" (click)="setRegion('Africa')">Africa</div>
+                <div class="dropdown__option" (click)="setRegion('America')">America</div>
+                <div class="dropdown__option" (click)="setRegion('Asia')">Asia</div>
+                <div class="dropdown__option" (click)="setRegion('Europe')">Europe</div>
+                <div class="dropdown__option" (click)="setRegion('Oceania')">Oceania</div>
+            </div>
+        </div>
+    </div>
+    
+    <mat-progress-bar mode="indeterminate" *ngIf="!countriesList"></mat-progress-bar>
+    
+    <div class="country_list">
+        <app-country-card *ngFor="let country of countriesList! | FilterCountryPipe: inpCountry | filterRegion: region"  [country]="country" (click) ="showDetails(country)"></app-country-card>
+    </div>
+</div>

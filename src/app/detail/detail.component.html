@@ -1,0 +1,39 @@
+<div class="details">
+    <a class="details__back_btn"
+       role="button"
+       [routerLink]="['../../']">
+        <i class="details__back_icon"></i> Back
+    </a>
+    <mat-progress-bar mode="indeterminate" *ngIf="!country"></mat-progress-bar>
+    <div class="content" *ngIf="country">
+        <img class="flag" src="{{country?.flags?.png}}">
+        <div class="country_info">
+            <h1 class="country_name">{{country?.name}}</h1>
+            <div class="country_main_info">
+                <div class="country_main_info-left">
+                    <p><strong>Native Name:</strong> {{country?.nativeName}}</p>
+                    <p><strong>Population:</strong> {{country?.population}}</p>
+                    <p><strong>Region:</strong> {{country?.region}}</p>
+                    <p><strong>Sub Region:</strong> {{country?.subregion}}</p>
+                    <p><strong>Capital:</strong> {{country?.capital}}</p>
+                </div>
+                <div class="country_main_info-right">
+                    <p><strong>Top Level Domain:</strong> {{country?.topLevelDomain | join}}</p>
+                    <p><strong>Currencies: </strong> <span>{{country?.currencies | join}}</span></p>
+                    <p><strong>Languages: </strong> <span>{{country?.languages | join}} </span></p>
+                </div>
+            </div>
+            <div class="border_countries">
+                <p><strong>Border Countries: </strong></p>
+                <div class="border_countries__btn_list">
+                    <a class="border_countries__btn" 
+                        role="button"
+                        *ngFor="let borderCountry of country?.borders"
+                        [routerLink]="['../', borderCountry]">
+                        {{borderCountry}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

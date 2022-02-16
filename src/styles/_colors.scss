@@ -1,0 +1,15 @@
+$background-color: hsl(0, 0%, 98%);
+$background-color-dark: hsl(207, 26%, 17%);
+
+$elements-color: hsl(0, 0%, 100%);
+$elements-color-dark: hsl(209, 23%, 22%);
+
+$text-color: hsl(200, 15%, 8%);
+$text-color-dark: hsl(0, 0%, 100%);
+
+
+$colors: (
+  --bg-color: ($background-color, $background-color-dark),
+  --elements-color: ($elements-color, $elements-color-dark),
+  --text-color: ($text-color, $text-color-dark)
+  )
